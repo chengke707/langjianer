@@ -440,6 +440,49 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
   transform: rotate(45deg);
 }
 
+/* 项目配图横排 */
+.proj-card__gallery {
+  margin: 12px 0 2px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.proj-gallery-thumb {
+  position: relative;
+  flex: 1 1 96px;
+  min-width: 96px;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #F4F6FA;
+  border: 1px solid var(--line);
+  cursor: zoom-in;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.proj-gallery-thumb:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px rgba(28,39,51,0.08);
+}
+.proj-gallery-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.proj-gallery-thumb:hover img { transform: scale(1.05); }
+.proj-gallery-thumb__zoom {
+  position: absolute;
+  inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(28,39,51,0.38);
+  color: #fff;
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.proj-gallery-thumb:hover .proj-gallery-thumb__zoom { opacity: 1; }
+.proj-gallery-thumb--tall { aspect-ratio: 3 / 4; }
+
 /* 获奖与证书 */
 .award-banner {
   display: flex;
@@ -828,7 +871,7 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 
     <div class="hero__stats">
       <div class="hero__stat">
-        <div class="hero__stat-value">4</div>
+        <div class="hero__stat-value">6</div>
         <div class="hero__stat-label">项目经历</div>
       </div>
       <div class="hero__stat">
@@ -928,6 +971,17 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
             <span class="tag">PPT 制作与 AI 辅助产出</span>
           </div>
         </div>
+
+        <div class="skill-group">
+          <div class="skill-group__name">多媒体创作</div>
+          <div class="skill-group__tags">
+            <span class="tag">AIGC</span>
+            <span class="tag">PR（Premiere Pro）</span>
+            <span class="tag">AE（After Effects）</span>
+            <span class="tag">Godot</span>
+            <span class="tag">PPT 制作（AI 一键生成 + PowerPoint 美化）</span>
+          </div>
+        </div>
       </section>
     </aside>
 
@@ -998,6 +1052,68 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
       <!-- 项目经历 -->
       <section class="section reveal" id="projects">
         <div class="eyebrow"><span class="eyebrow__en">Projects</span><span class="eyebrow__cn">项目经历</span><span class="eyebrow__rule"></span></div>
+
+        <article class="proj-card">
+          <div class="proj-card__head">
+            <div class="proj-card__title">山西·忻州主题 AI 文旅作品 <span class="proj-card__role">独立创作</span></div>
+            <div class="proj-card__date">2026.08</div>
+          </div>
+          <div class="proj-card__tags">
+            <span class="tag">AIGC 素材生成</span><span class="tag">PR 后期</span><span class="tag">AE 动效</span><span class="tag">山西文旅宣传</span>
+          </div>
+          <div class="proj-card__gallery">
+            <div class="proj-gallery-thumb proj-gallery-thumb--tall" data-img="assets/projects/proj-sx-1.jpg" data-title="五台山" role="button" tabindex="0" aria-label="查看五台山配图大图">
+              <img src="assets/projects/proj-sx-1.jpg" alt="五台山" loading="lazy">
+              <span class="proj-gallery-thumb__zoom">点击放大</span>
+            </div>
+            <div class="proj-gallery-thumb" data-img="assets/projects/proj-sx-2.jpg" data-title="平遥古城" role="button" tabindex="0" aria-label="查看平遥古城配图大图">
+              <img src="assets/projects/proj-sx-2.jpg" alt="平遥古城" loading="lazy">
+              <span class="proj-gallery-thumb__zoom">点击放大</span>
+            </div>
+            <div class="proj-gallery-thumb proj-gallery-thumb--tall" data-img="assets/projects/proj-sx-3.jpg" data-title="山西古木塔" role="button" tabindex="0" aria-label="查看山西古木塔配图大图">
+              <img src="assets/projects/proj-sx-3.jpg" alt="山西古木塔" loading="lazy">
+              <span class="proj-gallery-thumb__zoom">点击放大</span>
+            </div>
+            <div class="proj-gallery-thumb" data-img="assets/projects/proj-sx-4.jpg" data-title="忻州青山" role="button" tabindex="0" aria-label="查看忻州青山配图大图">
+              <img src="assets/projects/proj-sx-4.jpg" alt="忻州青山" loading="lazy">
+              <span class="proj-gallery-thumb__zoom">点击放大</span>
+            </div>
+          </div>
+          <ul class="proj-card__points">
+            <li>以山西文旅宣传为主题，围绕五台山、平遥古城、山西古木塔、忻州青山等标志性景观，使用 AIGC 工具批量生成高质量宣传素材，全流程自主创作。</li>
+            <li>使用 Premiere Pro 完成剪辑、调色与节奏设计，After Effects 制作转场与动效，输出成片适配文旅宣传传播场景。</li>
+            <li>沉淀 AIGC 提示词模板与后期工程预设，实现同类文旅作品快速复现，形成可复用的生产流水线。</li>
+          </ul>
+        </article>
+
+        <article class="proj-card">
+          <div class="proj-card__head">
+            <div class="proj-card__title">AI PPT 作品集 <span class="proj-card__role">独立制作</span></div>
+            <div class="proj-card__date">2026.08</div>
+          </div>
+          <div class="proj-card__tags">
+            <span class="tag">AI 一键生成</span><span class="tag">PowerPoint 美化</span><span class="tag">数据可视化</span>
+          </div>
+          <div class="proj-card__gallery">
+            <div class="proj-gallery-thumb" data-img="assets/projects/proj-ppt-1.jpg" data-title="数据图表页" role="button" tabindex="0" aria-label="查看数据图表页大图">
+              <img src="assets/projects/proj-ppt-1.jpg" alt="数据图表页" loading="lazy">
+              <span class="proj-gallery-thumb__zoom">点击放大</span>
+            </div>
+            <div class="proj-gallery-thumb" data-img="assets/projects/proj-ppt-2.jpg" data-title="信息图展示页" role="button" tabindex="0" aria-label="查看信息图展示页大图">
+              <img src="assets/projects/proj-ppt-2.jpg" alt="信息图展示页" loading="lazy">
+              <span class="proj-gallery-thumb__zoom">点击放大</span>
+            </div>
+            <div class="proj-gallery-thumb" data-img="assets/projects/proj-ppt-3.jpg" data-title="桌面办公场景页" role="button" tabindex="0" aria-label="查看桌面办公场景页大图">
+              <img src="assets/projects/proj-ppt-3.jpg" alt="桌面办公场景页" loading="lazy">
+              <span class="proj-gallery-thumb__zoom">点击放大</span>
+            </div>
+          </div>
+          <ul class="proj-card__points">
+            <li>运用 AI 工具一键生成 PPT 初稿，覆盖数据图表、信息图展示、桌面办公等多类页面版式，大幅缩短制作周期。</li>
+            <li>在 PowerPoint 中完成配色、字体、图表与版式的精细美化，兼顾信息密度与视觉一致性。</li>
+            <li>沉淀常用模板与提示词，适配汇报、路演、答辩多类场景，可快速按主题复现整套作品。</li>
+          </ul>
+        </article>
 
         <article class="proj-card">
           <div class="proj-card__head">
@@ -1221,7 +1337,9 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
   var lbTitle = document.getElementById('lightboxTitle');
 
   function openLightbox(card) {
-    lbImg.src = 'certs/' + card.getAttribute('data-cert');
+    var src = card.getAttribute('data-img');
+    if (!src) { src = 'certs/' + card.getAttribute('data-cert'); }
+    lbImg.src = src;
     lbImg.alt = card.getAttribute('data-title');
     lbTitle.textContent = card.getAttribute('data-title');
     lightbox.classList.add('lightbox--open');
@@ -1235,7 +1353,7 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('[data-cert]').forEach(function (card) {
+  document.querySelectorAll('[data-cert], [data-img]').forEach(function (card) {
     card.addEventListener('click', function () { openLightbox(card); });
     card.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(card); }
