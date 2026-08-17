@@ -168,6 +168,7 @@ img { display: block; max-width: 100%; }
   width: 106px; height: 106px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: 50% 0%;
   border: 3px solid #fff;
   box-shadow: 0 0 0 1px var(--line), 0 8px 20px rgba(28,39,51,0.14);
 }
@@ -1027,14 +1028,22 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
             <div class="cert-card__caption">Python 基础能力认证 <span class="hint">证书截图</span></div>
           </div>
 
-          <div class="cert-card">
-            <div class="cert-card__name">PROMPT 工程师认证</div>
-            <div class="cert-card__desc">精通提示词设计与优化，擅长与大模型高效交互</div>
+          <div class="cert-card cert-card--img" data-cert="cert-prompt.jpg" data-title="PROMPT 工程师认证" role="button" tabindex="0" aria-label="查看 PROMPT 工程师认证证书大图">
+            <div class="cert-thumb">
+              <img src="certs/cert-prompt.jpg" alt="PROMPT 工程师认证证书" loading="lazy">
+              <span class="cert-thumb__zoom">点击查看大图</span>
+            </div>
+            <div class="cert-card__caption">PROMPT 工程师认证 <span class="hint">证书截图</span></div>
           </div>
-          <div class="cert-card">
-            <div class="cert-card__name">智能体工程师认证</div>
-            <div class="cert-card__desc">具备 AI Agent 设计与开发能力，熟悉智能体协作</div>
+
+          <div class="cert-card cert-card--img" data-cert="cert-agent.jpg" data-title="智能体工程师认证" role="button" tabindex="0" aria-label="查看智能体工程师认证证书大图">
+            <div class="cert-thumb">
+              <img src="certs/cert-agent.jpg" alt="智能体工程师认证证书" loading="lazy">
+              <span class="cert-thumb__zoom">点击查看大图</span>
+            </div>
+            <div class="cert-card__caption">智能体工程师认证 <span class="hint">证书截图</span></div>
           </div>
+
           <div class="cert-card">
             <div class="cert-card__name">人工智能训练师（高级）</div>
             <div class="cert-card__desc">全面的 AI 训练方法论与实践经验</div>

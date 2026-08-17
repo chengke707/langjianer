@@ -1,0 +1,43 @@
+# 部署简历网站到 GitHub Pages（自动化工作流）
+# 说明：把代码推送到 main 分支后自动构建发布，全程免费，无需自定义域名。
+# 前提：仓库 Settings → Pages → Build and deployment → Source 选择 "GitHub Actions"
+
+name: Deploy static content to Pages
+
+on:
+  # main 分支有新的提交时自动部署
+  push:
+    branches: ["main"]
+  # 允许在 Actions 页面手动触发部署
+  workflow_dispatch:
+
+# 赋予工作流写入 Pages 的权限
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只跑一次部署，新部署会排队等待
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # 上传整个仓库（网站是纯静态文件，无需构建）
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
