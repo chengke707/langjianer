@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>程柯 · 个人简历</title>
+<meta name="description" content="程柯的个人简历 — 山西大学软件工程本科，AI应用开发 / Web全栈 / 网络安全方向">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232B4ACB'/%3E%3Ctext x='32' y='45' font-size='38' font-family='KaiTi,serif' text-anchor='middle' fill='white'%3E%E7%A8%8B%3C/text%3E%3C/svg%3E">
+<style>
+/* ============================================================
+   设计基调：简历即文档
+   纸白卡片 · 墨色文字 · 单一靛蓝点缀 · 衬线英文眉题
+   ============================================================ */
+:root {
+  --page-bg:    #EEF1F5;   /* 页面底色（浅灰） */
+  --card:       #FFFFFF;   /* 纸白卡片 */
+  --card-tint:  #FBFCFE;   /* 侧栏微青底 */
+  --ink:        #1C2733;   /* 墨色（标题） */
+  --ink-2:      #51616F;   /* 次级文字 */
+  --ink-3:      #8A97A5;   /* 弱化文字 */
+  --line:       #E4E8EE;   /* 发丝线 */
+  --accent:     #2B4ACB;   /* 靛蓝点缀 */
+  --accent-deep:#1F3AA8;
+  --accent-soft:#ECF0FB;   /* 靛蓝浅底 */
+
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+               "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: Georgia, "Times New Roman", "Songti SC", "SimSun", serif;   /* 英文眉题 */
+  --font-kai: "KaiTi", "STKaiti", "Kaiti SC", "SimSun", serif;              /* 姓氏水印 */
+
+  --radius: 12px;
+  --shadow-paper: 0 8px 30px rgba(28,39,51,0.06), 0 1px 3px rgba(28,39,51,0.04);
+  --topbar-h: 58px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--topbar-h) + 16px);
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background: var(--page-bg);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+
+/* ============================================================
+   顶部细条导航
+   ============================================================ */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--topbar-h);
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 28px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.topbar__logo {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.topbar__logo::before {
+  content: '';
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 2px;
+  background: var(--accent);
+  margin-right: 10px;
+  transform: translateY(-1px);
+}
+.topbar__nav {
+  display: flex;
+  gap: 2px;
+}
+.topbar__nav a {
+  padding: 6px 13px;
+  border-radius: 6px;
+  font-size: 0.86rem;
+  color: var(--ink-2);
+  transition: all 0.18s ease;
+  white-space: nowrap;
+}
+.topbar__nav a:hover { color: var(--ink); background: rgba(28,39,51,0.05); }
+
+.topbar__print {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.18s ease;
+}
+.topbar__print:hover { background: var(--accent); color: #fff; }
+.topbar__print svg { flex-shrink: 0; }
+
+/* ============================================================
+   纸张容器
+   ============================================================ */
+.paper {
+  max-width: 1080px;
+  margin: 32px auto 48px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-paper);
+  overflow: hidden;
+}
+
+/* ============================================================
+   头部：姓名名片
+   ============================================================ */
+.hero {
+  position: relative;
+  padding: 46px 48px 34px;
+  overflow: hidden;
+}
+/* 签名元素：姓氏水印 */
+.hero__seal {
+  position: absolute;
+  top: -46px;
+  right: 18px;
+  font-family: var(--font-kai);
+  font-size: 300px;
+  line-height: 1;
+  color: rgba(43,74,203,0.055);
+  pointer-events: none;
+  user-select: none;
+}
+.hero__id {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.hero__avatar {
+  flex-shrink: 0;
+  width: 106px; height: 106px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px var(--line), 0 8px 20px rgba(28,39,51,0.14);
+}
+.hero__name {
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+}
+.hero__title {
+  margin-top: 8px;
+  font-size: 1rem;
+  color: var(--ink-2);
+  letter-spacing: 0.03em;
+}
+.hero__title b { color: var(--accent); font-weight: 700; }
+
+.hero__contacts {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 15px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.84rem;
+  color: var(--ink-2);
+  transition: all 0.18s ease;
+}
+.chip svg { flex-shrink: 0; color: var(--accent); }
+a.chip:hover { border-color: var(--accent); color: var(--accent); }
+
+/* 数据条 */
+.hero__stats {
+  margin-top: 30px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.hero__stat { text-align: center; }
+.hero__stat + .hero__stat { border-left: 1px solid var(--line); }
+.hero__stat-value {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.hero__stat-label {
+  margin-top: 4px;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================
+   双栏主体
+   ============================================================ */
+.cols {
+  display: grid;
+  grid-template-columns: 316px 1fr;
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- 左侧栏 ---------- */
+.sidebar {
+  padding: 34px 30px;
+  background: var(--card-tint);
+  border-right: 1px solid var(--line);
+}
+.side-block + .side-block { margin-top: 34px; }
+
+/* 眉题：衬线英文 + 中文 + 发丝线 */
+.eyebrow {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 16px;
+  white-space: nowrap;
+}
+.eyebrow__en {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+.eyebrow__cn {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.08em;
+}
+.eyebrow__rule {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+  transform: translateY(-3px);
+}
+
+/* 基本信息 */
+.info-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 0.88rem;
+  border-bottom: 1px dashed var(--line);
+}
+.info-list li:last-child { border-bottom: none; }
+.info-list .k {
+  flex-shrink: 0;
+  width: 52px;
+  color: var(--ink-3);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+}
+.info-list .v { color: var(--ink); word-break: break-all; }
+.info-list a.v { color: var(--accent); }
+.info-list a.v:hover { text-decoration: underline; }
+
+/* 技能分组 */
+.skill-group + .skill-group { margin-top: 18px; }
+.skill-group__name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 9px;
+}
+.skill-group__name::before {
+  content: '';
+  width: 4px; height: 12px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+.skill-group__tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tag {
+  padding: 3px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  font-size: 0.78rem;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+/* ---------- 右侧主栏 ---------- */
+.main { padding: 34px 42px 44px; }
+.section + .section { margin-top: 40px; }
+
+/* 教育背景 */
+.edu-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 20px 24px;
+}
+.edu-card__school {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.edu-card__major {
+  margin-top: 2px;
+  font-size: 0.88rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+.edu-card__courses {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.edu-card__desc { margin-top: 14px; }
+.edu-card__desc li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  line-height: 1.8;
+}
+.edu-card__desc li + li { margin-top: 4px; }
+.edu-card__desc li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.62em;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* 项目经历 */
+.proj-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 20px 24px;
+  background: #fff;
+  transition: all 0.2s ease;
+  page-break-inside: avoid;
+}
+.proj-card:hover {
+  border-color: #CBD6EC;
+  box-shadow: 0 4px 14px rgba(28,39,51,0.05);
+  transform: translateY(-2px);
+}
+.proj-card + .proj-card { margin-top: 14px; }
+.proj-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.proj-card__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.proj-card__role {
+  flex-shrink: 0;
+  padding: 2px 9px;
+  border-radius: 5px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.proj-card__date {
+  font-family: var(--font-serif);
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+.proj-card__tags { margin: 10px 0 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+.proj-card__tags .tag { font-size: 0.74rem; padding: 2px 9px; color: var(--ink-3); }
+.proj-card__points li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.87rem;
+  color: var(--ink-2);
+  line-height: 1.85;
+}
+.proj-card__points li + li { margin-top: 3px; }
+.proj-card__points li::before {
+  content: '';
+  position: absolute;
+  left: 2px; top: 0.72em;
+  width: 5px; height: 5px;
+  background: var(--accent);
+  border-radius: 1px;
+  transform: rotate(45deg);
+}
+
+/* 获奖与证书 */
+.award-banner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--accent-soft) 0%, #fff 60%);
+  padding: 18px 22px;
+  margin-bottom: 18px;
+}
+.award-banner__icon {
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border-radius: 9px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.award-banner__title { font-size: 0.95rem; font-weight: 700; letter-spacing: 0.02em; }
+.award-banner__desc { margin-top: 2px; font-size: 0.82rem; color: var(--ink-2); }
+.award-banner__badge {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 4px 14px;
+  white-space: nowrap;
+}
+
+.cert-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.cert-card {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 14px 18px;
+  background: #fff;
+  page-break-inside: avoid;
+}
+.cert-card__name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+.cert-card__name::before {
+  content: '';
+  flex-shrink: 0;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.cert-card__desc { margin-top: 5px; font-size: 0.78rem; color: var(--ink-3); line-height: 1.6; }
+.cert-more {
+  margin-top: 14px;
+  font-size: 0.8rem;
+  color: var(--ink-3);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.cert-more b { color: var(--accent); font-family: var(--font-serif); font-size: 1rem; }
+
+/* 证书图片卡 */
+.cert-card--img { padding: 10px; cursor: zoom-in; }
+.cert-card--img:hover { border-color: var(--accent); box-shadow: 0 4px 14px rgba(28,39,51,0.06); }
+.cert-thumb {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  aspect-ratio: 7 / 5;
+  background: #F4F6FA;
+}
+.cert-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.cert-card--img:hover .cert-thumb img { transform: scale(1.04); }
+.cert-thumb__zoom {
+  position: absolute;
+  inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(28,39,51,0.38);
+  color: #fff;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.cert-card--img:hover .cert-thumb__zoom { opacity: 1; }
+.cert-card__caption {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px;
+  padding: 10px 8px 6px;
+  font-size: 0.84rem; font-weight: 700;
+}
+.cert-card__caption .hint { font-size: 0.72rem; color: var(--ink-3); font-weight: 400; }
+
+/* 证书大图查看 */
+.lightbox {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(12,18,28,0.88);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 16px;
+  padding: 40px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.lightbox--open { opacity: 1; pointer-events: auto; }
+.lightbox img {
+  max-width: min(1200px, 88vw);
+  max-height: 78vh;
+  border-radius: 8px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+  background: #fff;
+}
+.lightbox__title { color: #fff; font-size: 0.92rem; letter-spacing: 0.06em; }
+.lightbox__close {
+  position: absolute; top: 22px; right: 26px;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.35);
+  background: transparent;
+  color: #fff; font-size: 1.15rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.lightbox__close:hover { background: rgba(255,255,255,0.15); }
+
+/* 自我评价 */
+.eval-list li {
+  position: relative;
+  padding: 14px 0 14px 18px;
+  border-bottom: 1px dashed var(--line);
+  font-size: 0.9rem;
+  color: var(--ink-2);
+  line-height: 1.9;
+}
+.eval-list li:last-child { border-bottom: none; padding-bottom: 0; }
+.eval-list li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 22px; bottom: 22px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--accent-soft);
+}
+.eval-list li::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 22px;
+  width: 3px; height: 18px;
+  border-radius: 2px;
+  background: var(--accent);
+}
+.eval-list b {
+  color: var(--ink);
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+/* ============================================================
+   页脚
+   ============================================================ */
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 20px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+}
+
+/* ============================================================
+   滚动浮现
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.reveal--visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   响应式
+   ============================================================ */
+@media (max-width: 900px) {
+  .cols { grid-template-columns: 1fr; }
+  .sidebar { border-right: none; border-bottom: 1px solid var(--line); }
+  .topbar__nav { display: none; }
+  .hero__stats { grid-template-columns: repeat(2, 1fr); row-gap: 18px; }
+  .hero__stat:nth-child(3) { border-left: none; }
+  .hero__stat:nth-child(n+3) { border-top: 1px solid var(--line); padding-top: 16px; }
+}
+@media (max-width: 560px) {
+  .hero { padding: 32px 24px 26px; }
+  .hero__name { font-size: 2.1rem; }
+  .hero__seal { font-size: 180px; top: -10px; }
+  .hero__id { gap: 18px; }
+  .hero__avatar { width: 84px; height: 84px; }
+  .main { padding: 28px 24px 34px; }
+  .sidebar { padding: 28px 24px; }
+  .cert-grid { grid-template-columns: 1fr; }
+  .footer { padding: 16px 24px; }
+  .award-banner { flex-wrap: wrap; }
+  .award-banner__badge { margin-left: 0; }
+}
+
+/* ============================================================
+   打印 / 保存 PDF
+   ============================================================ */
+@media print {
+  @page { margin: 11mm; }
+  body { background: #fff; }
+  .topbar, .lightbox { display: none; }
+  .paper { margin: 0; border: none; border-radius: 0; box-shadow: none; max-width: none; }
+  .cols { grid-template-columns: 1fr; }
+  .sidebar { border-right: none; border-bottom: 1px solid var(--line); background: #fff; }
+  .hero { padding: 10px 4px 20px; }
+  .main { padding: 22px 4px; }
+  .footer { padding: 14px 4px; }
+  .proj-card, .cert-card { break-inside: avoid; }
+  .reveal { opacity: 1; transform: none; }
+  a { color: inherit; }
+}
+
+/* 尊重系统减弱动效设置 */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .proj-card { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!--
+  ══════════════════════════════════════════════════════════════
+  自定义指南（想改哪里改哪里，改完保存、刷新页面即可看到效果）
+  ══════════════════════════════════════════════════════════════
+  · 改姓名 / 电话 / 邮箱 / GitHub 链接
+      → 搜索 15110595005 或 ciao2008 或 chengke707，替换成新的
+  · 换头像
+      → 用一张新照片替换同目录下的 avatar.jpg（文件名保持 avatar.jpg）
+  · 改学校、专业、课程
+      → 找到“教育背景”板块，直接改里面的文字
+  · 改项目经历 / 自我评价 / 证书
+      → 找到对应板块，照着现有格式增删条目即可
+  · 换整站主色调
+      → 搜索 --accent 和 #2B4ACB，把颜色值换成你喜欢的主色
+  · 添加新证书图片
+      → 把图片放进 certs 文件夹，再照着已有证书卡片复制一段修改
+  ══════════════════════════════════════════════════════════════
+-->
+
+<!-- ============================================================
+     顶部导航
+     ============================================================ -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <span class="topbar__logo">程柯 · 个人简历</span>
+    <nav class="topbar__nav" aria-label="简历板块">
+      <a href="#education">教育背景</a>
+      <a href="#projects">项目经历</a>
+      <a href="#awards">获奖证书</a>
+      <a href="#evaluation">自我评价</a>
+    </nav>
+    <button class="topbar__print" type="button" onclick="window.print()" aria-label="打印或保存为 PDF">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      打印 / 保存 PDF
+    </button>
+  </div>
+</header>
+
+<!-- ============================================================
+     纸张主体
+     ============================================================ -->
+<main class="paper">
+
+  <!-- ---------- 头部名片 ---------- -->
+  <header class="hero">
+    <span class="hero__seal" aria-hidden="true">程</span>
+
+    <div class="hero__id">
+      <img class="hero__avatar" src="avatar.jpg" alt="程柯的头像" width="106" height="106">
+      <div>
+        <h1 class="hero__name">程柯</h1>
+        <p class="hero__title">山西大学 · 软件工程（本科）｜深耕 <b>AI 应用开发</b> · <b>Web 全栈</b> · <b>网络安全</b> 三大方向</p>
+      </div>
+    </div>
+
+    <div class="hero__contacts">
+      <a class="chip" href="tel:15110595005">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        15110595005
+      </a>
+      <a class="chip" href="mailto:ciao2008@163.com">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+        ciao2008@163.com
+      </a>
+      <a class="chip" href="https://github.com/chengke707" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        github.com/chengke707
+      </a>
+    </div>
+
+    <div class="hero__stats">
+      <div class="hero__stat">
+        <div class="hero__stat-value">4</div>
+        <div class="hero__stat-label">项目经历</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-value">10</div>
+        <div class="hero__stat-label">专业证书</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-value">3</div>
+        <div class="hero__stat-label">技术方向</div>
+      </div>
+      <div class="hero__stat">
+        <div class="hero__stat-value">总决赛</div>
+        <div class="hero__stat-label">竞赛荣誉</div>
+      </div>
+    </div>
+  </header>
+
+  <div class="cols">
+
+    <!-- ==================== 左侧栏 ==================== -->
+    <aside class="sidebar">
+
+      <!-- 基本信息 -->
+      <section class="side-block reveal">
+        <div class="eyebrow"><span class="eyebrow__en">Profile</span><span class="eyebrow__cn">基本信息</span><span class="eyebrow__rule"></span></div>
+        <ul class="info-list">
+          <li><span class="k">姓名</span><span class="v">程柯</span></li>
+          <li><span class="k">电话</span><a class="v" href="tel:15110595005">15110595005</a></li>
+          <li><span class="k">邮箱</span><a class="v" href="mailto:ciao2008@163.com">ciao2008@163.com</a></li>
+          <li><span class="k">GitHub</span><a class="v" href="https://github.com/chengke707" target="_blank" rel="noopener">github.com/chengke707</a></li>
+          <li><span class="k">学校</span><span class="v">山西大学</span></li>
+          <li><span class="k">专业</span><span class="v">软件工程</span></li>
+          <li><span class="k">学历</span><span class="v">本科</span></li>
+        </ul>
+      </section>
+
+      <!-- 专业技能 -->
+      <section class="side-block reveal">
+        <div class="eyebrow"><span class="eyebrow__en">Skills</span><span class="eyebrow__cn">专业技能</span><span class="eyebrow__rule"></span></div>
+
+        <div class="skill-group">
+          <div class="skill-group__name">编程语言</div>
+          <div class="skill-group__tags">
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML / CSS</span>
+            <span class="tag">大模型 API 对接</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group__name">开发与 AI 工具</div>
+          <div class="skill-group__tags">
+            <span class="tag">VS Code</span>
+            <span class="tag">PyCharm</span>
+            <span class="tag">Git</span>
+            <span class="tag">Claude Code</span>
+            <span class="tag">DeepSeek 等 AI 开发助手</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group__name">Web 开发</div>
+          <div class="skill-group__tags">
+            <span class="tag">单页展示网站</span>
+            <span class="tag">Canvas 网页游戏</span>
+            <span class="tag">静态网页部署托管</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group__name">网络安全</div>
+          <div class="skill-group__tags">
+            <span class="tag">渗透测试思维</span>
+            <span class="tag">网络环境调试</span>
+            <span class="tag">代理配置</span>
+            <span class="tag">故障定位排查</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group__name">AI 应用工程</div>
+          <div class="skill-group__tags">
+            <span class="tag">智能业务 Agent</span>
+            <span class="tag">语音解析业务逻辑</span>
+            <span class="tag">提示词工程调试</span>
+            <span class="tag">模型参数调优</span>
+            <span class="tag">多模型后端切换</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group__name">多媒体与办公</div>
+          <div class="skill-group__tags">
+            <span class="tag">短视频 IP 策划</span>
+            <span class="tag">AI 素材自动化</span>
+            <span class="tag">PPT 制作与 AI 辅助产出</span>
+          </div>
+        </div>
+      </section>
+    </aside>
+
+    <!-- ==================== 右侧主栏 ==================== -->
+    <section class="main">
+
+      <!-- 教育背景 -->
+      <section class="section reveal" id="education">
+        <div class="eyebrow"><span class="eyebrow__en">Education</span><span class="eyebrow__cn">教育背景</span><span class="eyebrow__rule"></span></div>
+
+        <div class="edu-card">
+          <div class="edu-card__school">山西大学</div>
+          <div class="edu-card__major">软件工程专业 · 本科</div>
+          <div class="edu-card__courses">
+            <span class="tag">数据结构与算法</span>
+            <span class="tag">计算机网络</span>
+            <span class="tag">网络空间安全</span>
+            <span class="tag">操作系统</span>
+            <span class="tag">数据库原理</span>
+            <span class="tag">软件工程</span>
+            <span class="tag">Python 程序开发</span>
+            <span class="tag">前端 Web 开发</span>
+          </div>
+          <ul class="edu-card__desc">
+            <li>系统修习计算机核心课程，构建完备专业知识体系，深耕 AI 应用开发、Web 全栈开发、网络安全与渗透测试三大技术方向。</li>
+            <li>积极投身学科竞赛、大学生创新创业科研项目，独立完成多款软件原型、网页游戏开发，具备从需求分析—方案设计—编码实现—测试落地的完整工程闭环实践能力。</li>
+            <li>熟练运用 AI 工具辅助 PPT 快速高质量产出，能够独立完成汇报 PPT 架构搭建、内容打磨与视觉美化，适配企业汇报、竞赛答辩多类场景。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 项目经历 -->
+      <section class="section reveal" id="projects">
+        <div class="eyebrow"><span class="eyebrow__en">Projects</span><span class="eyebrow__cn">项目经历</span><span class="eyebrow__rule"></span></div>
+
+        <article class="proj-card">
+          <div class="proj-card__head">
+            <div class="proj-card__title">轻量化个人 Web 站点 + 内嵌 Canvas 网页游戏 <span class="proj-card__role">独立开发</span></div>
+            <div class="proj-card__date">2026.07 – 2026.08</div>
+          </div>
+          <div class="proj-card__tags">
+            <span class="tag">HTML / CSS</span><span class="tag">Canvas</span><span class="tag">性能优化</span><span class="tag">云端托管</span>
+          </div>
+          <ul class="proj-card__points">
+            <li>独立研发极简高性能个人作品集网站，采用单页轻量化 HTML 架构，剔除重型第三方依赖，优化页面加载性能。</li>
+            <li>基于 Canvas 原生从零开发 2D 浏览器小游戏，全部代码资源内置、无需外部图片素材，控制项目体积。</li>
+            <li>集成个人履历与项目成果展示板块，迭代 UI 视觉体系，优化配色、圆角与阴影，适配主流桌面端浏览器，运用云端托管方案快速上线公开可访问演示链接。</li>
+          </ul>
+        </article>
+
+        <article class="proj-card">
+          <div class="proj-card__head">
+            <div class="proj-card__title">网络安全科普短视频 IP 项目 <span class="proj-card__role">独立策划落地</span></div>
+            <div class="proj-card__date">2026.06 – 2026.08</div>
+          </div>
+          <div class="proj-card__tags">
+            <span class="tag">短视频</span><span class="tag">AI 素材生产</span><span class="tag">自动化流水线</span>
+          </div>
+          <ul class="proj-card__points">
+            <li>主导抖音网络安全科普 IP 整体策划，创新卡通角色对话叙事模式，将渗透测试、网络安全专业知识转化为幽默通俗短视频内容。</li>
+            <li>打通短视频完整生产流水线：脚本创作、AI 批量生成聊天对话帧素材、自动化切片处理、配音剪辑方案设计，搭建完整账号人设与简介体系。</li>
+            <li>沉淀可复用 AI 标准化指令模板，实现聊天截图素材自动分割处理，短视频素材生产效率提升约 35%。</li>
+          </ul>
+        </article>
+
+        <article class="proj-card">
+          <div class="proj-card__head">
+            <div class="proj-card__title">智能古风记账 Agent 应用 <span class="proj-card__role">独立开发</span></div>
+            <div class="proj-card__date">2025.11 – 2026.03</div>
+          </div>
+          <div class="proj-card__tags">
+            <span class="tag">大模型 API</span><span class="tag">智能 Agent</span><span class="tag">语音解析</span><span class="tag">多模型切换</span>
+          </div>
+          <ul class="proj-card__points">
+            <li>独立完成移动端智能记账应用原型整体架构设计与工程实现，创新“皇帝—太监”古风角色扮演交互范式，打造差异化产品体验。</li>
+            <li>对接 DeepSeek、火山方舟·豆包大模型 API，完成接口地址、密钥管理、模型超参、系统提示词全套工程配置；实现语音输入自动解析收支业务，优化提示词体系，显著提升语音记账解析准确率。</li>
+            <li>落地收支可视化图表、攒钱目标管控、历史账单检索等核心业务模块；处理接口报错、参数异常等各类工程 bug，完成完整功能测试调优，支持快速切换不同大模型后端，输出可直接部署交付的完整方案。</li>
+          </ul>
+        </article>
+
+        <article class="proj-card">
+          <div class="proj-card__head">
+            <div class="proj-card__title">仿生机器人仿真算法竞赛项目 <span class="proj-card__role">团队核心开发</span></div>
+            <div class="proj-card__date">2025.03 – 2025.07</div>
+          </div>
+          <div class="proj-card__tags">
+            <span class="tag">运动控制</span><span class="tag">仿真调优</span><span class="tag">全国总决赛</span>
+          </div>
+          <ul class="proj-card__points">
+            <li>作为软件算法核心成员参与仿生机器人仿真赛道竞赛，负责机器人运动控制逻辑开发，纯软件仿真完成任务、无需实体硬件。</li>
+            <li>拆解业务需求，调优仿真环境参数，迭代机器人任务算法，优化运动轨迹，降低任务失败率。</li>
+            <li>独立承担竞赛申报材料、项目技术文档、演示视频撰写剪辑，支撑全国总决赛答辩筹备；与硬件组员高效协同对齐项目进度，积累大型竞赛项目团队协作与交付落地实战经验。</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- 获奖与证书 -->
+      <section class="section reveal" id="awards">
+        <div class="eyebrow"><span class="eyebrow__en">Honors</span><span class="eyebrow__cn">获奖与证书</span><span class="eyebrow__rule"></span></div>
+
+        <div class="award-banner">
+          <div class="award-banner__icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M17 3H7v7a5 5 0 0 0 10 0V3z"/><path d="M7 3c-1.1 0-2 .9-2 2v4a7 7 0 0 0 14 0V5c0-1.1-.9-2-2-2"/></svg>
+          </div>
+          <div>
+            <div class="award-banner__title">仿生机器人仿真算法竞赛</div>
+            <div class="award-banner__desc">软件算法核心成员 · 支撑全国总决赛答辩筹备 · 具备学科竞赛与大创项目申报完整实战经验</div>
+          </div>
+          <span class="award-banner__badge">全国总决赛</span>
+        </div>
+
+        <div class="cert-grid">
+          <div class="cert-card cert-card--img" data-cert="cert-rag.jpg" data-title="RAG 工程师认证" role="button" tabindex="0" aria-label="查看 RAG 工程师认证证书大图">
+            <div class="cert-thumb">
+              <img src="certs/cert-rag.jpg" alt="RAG 工程师认证证书" loading="lazy">
+              <span class="cert-thumb__zoom">点击查看大图</span>
+            </div>
+            <div class="cert-card__caption">RAG 工程师认证 <span class="hint">证书扫描件</span></div>
+          </div>
+
+          <div class="cert-card cert-card--img" data-cert="cert-finetune.jpg" data-title="微调工程师认证" role="button" tabindex="0" aria-label="查看微调工程师认证证书大图">
+            <div class="cert-thumb">
+              <img src="certs/cert-finetune.jpg" alt="微调工程师认证证书" loading="lazy">
+              <span class="cert-thumb__zoom">点击查看大图</span>
+            </div>
+            <div class="cert-card__caption">微调工程师认证 <span class="hint">证书扫描件</span></div>
+          </div>
+
+          <div class="cert-card cert-card--img" data-cert="cert-stablediffusion.jpg" data-title="Stable Diffusion 认证" role="button" tabindex="0" aria-label="查看 Stable Diffusion 认证证书大图">
+            <div class="cert-thumb">
+              <img src="certs/cert-stablediffusion.jpg" alt="Stable Diffusion 认证证书" loading="lazy">
+              <span class="cert-thumb__zoom">点击查看大图</span>
+            </div>
+            <div class="cert-card__caption">Stable Diffusion 认证 <span class="hint">证书扫描件</span></div>
+          </div>
+
+          <div class="cert-card cert-card--img" data-cert="cert-raccoon.jpg" data-title="办公小浣熊认证" role="button" tabindex="0" aria-label="查看办公小浣熊认证证书大图">
+            <div class="cert-thumb">
+              <img src="certs/cert-raccoon.jpg" alt="办公小浣熊认证证书" loading="lazy">
+              <span class="cert-thumb__zoom">点击查看大图</span>
+            </div>
+            <div class="cert-card__caption">办公小浣熊认证 <span class="hint">证书扫描件</span></div>
+          </div>
+
+          <div class="cert-card cert-card--img" data-cert="cert-doubao.jpg" data-title="豆包 AI+编程能力认证" role="button" tabindex="0" aria-label="查看豆包 AI+编程能力认证证书大图">
+            <div class="cert-thumb">
+              <img src="certs/cert-doubao.jpg" alt="豆包 AI+编程能力认证证书" loading="lazy">
+              <span class="cert-thumb__zoom">点击查看大图</span>
+            </div>
+            <div class="cert-card__caption">豆包 AI+编程能力认证 <span class="hint">证书扫描件</span></div>
+          </div>
+
+          <div class="cert-card cert-card--img" data-cert="cert-ai4scup.jpg" data-title="AI 4S Cup" role="button" tabindex="0" aria-label="查看 AI 4S Cup 证书大图">
+            <div class="cert-thumb">
+              <img src="certs/cert-ai4scup.jpg" alt="AI 4S Cup 证书" loading="lazy">
+              <span class="cert-thumb__zoom">点击查看大图</span>
+            </div>
+            <div class="cert-card__caption">AI 4S Cup <span class="hint">证书截图</span></div>
+          </div>
+
+          <div class="cert-card cert-card--img" data-cert="cert-python.jpg" data-title="Python 基础能力认证" role="button" tabindex="0" aria-label="查看 Python 基础能力认证证书大图">
+            <div class="cert-thumb">
+              <img src="certs/cert-python.jpg" alt="Python 基础能力认证证书" loading="lazy">
+              <span class="cert-thumb__zoom">点击查看大图</span>
+            </div>
+            <div class="cert-card__caption">Python 基础能力认证 <span class="hint">证书截图</span></div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-card__name">PROMPT 工程师认证</div>
+            <div class="cert-card__desc">精通提示词设计与优化，擅长与大模型高效交互</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-card__name">智能体工程师认证</div>
+            <div class="cert-card__desc">具备 AI Agent 设计与开发能力，熟悉智能体协作</div>
+          </div>
+          <div class="cert-card">
+            <div class="cert-card__name">人工智能训练师（高级）</div>
+            <div class="cert-card__desc">全面的 AI 训练方法论与实践经验</div>
+          </div>
+          <div class="cert-card" style="display:flex;align-items:center;justify-content:center;border-style:dashed;background:var(--card-tint);grid-column:1 / -1;">
+            <div class="cert-card__name" style="font-weight:600;">以上共计 <b style="font-family:var(--font-serif);font-size:1.15rem;color:var(--accent);margin:0 4px;">10</b> 项计算机技术相关证书</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 自我评价 -->
+      <section class="section reveal" id="evaluation">
+        <div class="eyebrow"><span class="eyebrow__en">Summary</span><span class="eyebrow__cn">自我评价</span><span class="eyebrow__rule"></span></div>
+
+        <ul class="eval-list">
+          <li><b>持续学习</b>保持自主学习，跟进网络空间安全、大模型应用开发、Web 游戏开发前沿技术，具备大量实战工程沉淀。</li>
+          <li><b>工程能力</b>较强故障排查能力，擅长网络调试、API 排错、软件问题定位，遇到技术难题能够自主检索资料闭环解决。</li>
+          <li><b>竞赛与表达</b>拥有丰富竞赛备赛经验，熟悉省内高校推免竞赛目录，具备大创项目申报、创新作品打磨完整实战经验；擅长 PPT 设计与 AI 辅助快速产出高质量汇报材料，可快速适配企业面试、项目汇报、竞赛答辩各类输出场景。</li>
+        </ul>
+      </section>
+
+    </section>
+  </div>
+
+  <!-- ---------- 页脚 ---------- -->
+  <footer class="footer">
+    <span>© 2026 程柯 · 个人简历</span>
+    <span>Designed for reading · Built with care</span>
+  </footer>
+</main>
+
+<!-- ============================================================
+     证书大图查看层
+     ============================================================ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox__close" id="lightboxClose" type="button" aria-label="关闭大图">✕</button>
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox__title" id="lightboxTitle"></div>
+</div>
+
+<!-- ============================================================
+     JavaScript
+     ============================================================ -->
+<script>
+(function () {
+  'use strict';
+
+  // 滚动浮现
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal--visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    reveals.forEach(function (el) { observer.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('reveal--visible'); });
+  }
+
+  // 证书大图查看
+  var lightbox = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightboxImg');
+  var lbTitle = document.getElementById('lightboxTitle');
+
+  function openLightbox(card) {
+    lbImg.src = 'certs/' + card.getAttribute('data-cert');
+    lbImg.alt = card.getAttribute('data-title');
+    lbTitle.textContent = card.getAttribute('data-title');
+    lightbox.classList.add('lightbox--open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('lightbox--open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-cert]').forEach(function (card) {
+    card.addEventListener('click', function () { openLightbox(card); });
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(card); }
+    });
+  });
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+})();
+</script>
+
+</body>
+</html>
