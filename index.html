@@ -579,6 +579,72 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 }
 .lightbox__close:hover { background: rgba(255,255,255,0.15); }
 
+/* 关于我 */
+.about-card {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 22px 24px;
+  background: #fff;
+  page-break-inside: avoid;
+}
+.about-card__lead {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+.about-card__lead .en {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--accent);
+  margin-right: 6px;
+}
+.about-card__sub {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+  line-height: 1.9;
+}
+.about-grid {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.about-item {
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 12px 15px;
+  background: var(--card-tint);
+  transition: all 0.18s ease;
+}
+.about-item:hover {
+  border-color: #CBD6EC;
+  background: #fff;
+  box-shadow: 0 3px 10px rgba(28,39,51,0.05);
+}
+.about-item__title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.03em;
+}
+.about-item__title::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 2px;
+  background: var(--accent);
+  margin-right: 7px;
+  transform: translateY(-1px);
+}
+.about-item__desc {
+  margin-top: 5px;
+  font-size: 0.8rem;
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+
 /* 自我评价 */
 .eval-list li {
   position: relative;
@@ -655,6 +721,7 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
   .main { padding: 28px 24px 34px; }
   .sidebar { padding: 28px 24px; }
   .cert-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
   .footer { padding: 16px 24px; }
   .award-banner { flex-wrap: wrap; }
   .award-banner__badge { margin-left: 0; }
@@ -715,6 +782,7 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
     <span class="topbar__logo">程柯 · 个人简历</span>
     <nav class="topbar__nav" aria-label="简历板块">
       <a href="#education">教育背景</a>
+      <a href="#about">关于我</a>
       <a href="#projects">项目经历</a>
       <a href="#awards">获奖证书</a>
       <a href="#evaluation">自我评价</a>
@@ -888,6 +956,42 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
             <li>积极投身学科竞赛、大学生创新创业科研项目，独立完成多款软件原型、网页游戏开发，具备从需求分析—方案设计—编码实现—测试落地的完整工程闭环实践能力。</li>
             <li>熟练运用 AI 工具辅助 PPT 快速高质量产出，能够独立完成汇报 PPT 架构搭建、内容打磨与视觉美化，适配企业汇报、竞赛答辩多类场景。</li>
           </ul>
+        </div>
+      </section>
+
+      <!-- 关于我 -->
+      <section class="section reveal" id="about">
+        <div class="eyebrow"><span class="eyebrow__en">About</span><span class="eyebrow__cn">关于我</span><span class="eyebrow__rule"></span></div>
+
+        <div class="about-card">
+          <p class="about-card__lead"><span class="en">Technology &amp; Humanities</span>技术与人文，是我理解世界的两条线。</p>
+          <p class="about-card__sub">我喜欢心理学、社会学与哲学。它们看起来与代码无关，其实一直长在我的专业技能里——以下是它们与每个技术方向的连接点：</p>
+          <div class="about-grid">
+            <div class="about-item">
+              <div class="about-item__title">心理学 × 提示词与渗透</div>
+              <div class="about-item__desc">写提示词时先琢磨“人如何表达意图”；社会工程学让我懂得，安全漏洞的另一半常藏在人的认知偏差里。</div>
+            </div>
+            <div class="about-item">
+              <div class="about-item__title">社会学 × 内容叙事</div>
+              <div class="about-item__desc">做网络安全科普短视频时，先站在观众角度想“怎么讲才听得进”，于是有了卡通角色对话的叙事设计。</div>
+            </div>
+            <div class="about-item">
+              <div class="about-item__title">哲学 × 工程排障</div>
+              <div class="about-item__desc">追问与思辨是我的默认动作：不满足于表面报错，习惯层层追问到根因，直到闭环解决。</div>
+            </div>
+            <div class="about-item">
+              <div class="about-item__title">发现美 × 视觉打磨</div>
+              <div class="about-item__desc">我有一双善于发现美的眼睛：本站配色、圆角与阴影由我逐一打磨，汇报 PPT 的架构与视觉同样独立完成。</div>
+            </div>
+            <div class="about-item">
+              <div class="about-item__title">共情 × 产品与协作</div>
+              <div class="about-item__desc">习惯站在对方的位置做事：“皇帝—太监”古风记账想让记账少一点门槛，团队里先听懂队友在为什么发愁。</div>
+            </div>
+            <div class="about-item">
+              <div class="about-item__title">分享与靠谱 × 交付</div>
+              <div class="about-item__desc">乐于把专业知识做成公开内容分享；从需求分析到测试落地交付完整闭环，说好的事一定按时保质完成。</div>
+            </div>
+          </div>
         </div>
       </section>
 
