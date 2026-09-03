@@ -571,9 +571,9 @@ a{color:inherit;text-decoration:none}
 
 /* ===== 响应式与动效降级 ===== */
 @media (max-width:960px){
-  .scene{height:auto;min-height:0;padding:120px 22px 60px;flex-direction:column}
+  .scene{height:auto;min-height:0;padding:0 22px 60px;flex-direction:column}
   .scene__viewport{width:100%;height:auto;perspective:none;transform:none !important}
-  .scene__title{position:static;max-width:none;text-align:center;margin-bottom:40px}
+  .scene__title{position:relative;margin:0 auto 6px;text-align:center;max-width:none;padding-top:18px}
   #stage{
     position:static;
     width:100%;height:auto;transform:none !important;
@@ -589,12 +589,21 @@ a{color:inherit;text-decoration:none}
   .card__icon,.card h3,.card p,.card__go,.card--contact .row,.card--social .big{transform:none}
   .topbar{padding:16px 20px}
   .topbar nav a{font-size:15px}
-  .scene__name{font-size:clamp(58px,11vw,72px)}
+  .scene__name{font-size:clamp(52px,12vw,72px)}
   .skills__grid{grid-template-columns:repeat(2,1fr)}
   .about__grid{grid-template-columns:1fr}
   .certs__grid,.contact__grid{grid-template-columns:1fr}
   .section{padding:80px 20px 60px}
-  #wireframe-canvas{display:none}
+  /* 移动端：银河竖放显示（不再隐藏），叠在标题后作背景 */
+  #wireframe-canvas{
+    display:block;
+    position:relative;top:auto;left:auto;
+    transform:none;
+    width:min(100%,440px);height:min(100%,440px);
+    margin:-30px auto -60px;
+    opacity:.6;z-index:0;
+  }
+  #stage{position:relative;top:auto}
 }
 @media (prefers-reduced-motion:reduce){
   .float,.ground,.scene__blob,.scene__cue{animation:none}
@@ -1071,7 +1080,7 @@ a{color:inherit;text-decoration:none}
       });
 
       galaxy = new THREE.Points(gGeo, gMat);
-      galaxy.rotation.x = 0.28;
+      galaxy.rotation.x = window.innerWidth < 960 ? 0.55 : 0.28;
       wireScene.add(galaxy);
     }
 
@@ -1104,6 +1113,13 @@ a{color:inherit;text-decoration:none}
       if (wireRenderer && wireCanvas) {
         var w = wireCanvas.clientWidth, h = wireCanvas.clientHeight;
         if (w && h) { wireRenderer.setSize(w, h); }
+        if (wireCamera && w && h) {
+          wireCamera.aspect = w / h;
+          wireCamera.updateProjectionMatrix();
+        }
+      }
+      if (galaxy) {
+        galaxy.rotation.x = window.innerWidth < 960 ? 0.55 : 0.28;
       }
     });
   }
